@@ -3,7 +3,7 @@ package ru.netology.stats;
 
 public class StatsService {
     public long sumSales(long[] sales) {
-        int sum = 0;
+        long sum = 0;
         //int month = 0; // переменная для индекса рассматриваемого месяца в массиве
         for (long sale : sales) {
             // sales[minMonth] - продажи в месяце minMonth
@@ -15,11 +15,7 @@ public class StatsService {
     }
 
     public long averageSales(long[] sales) {
-        int sum = 0;
-        for (long sale : sales) {
-            sum += sale;
-        }
-        return sum / sales.length;
+        return sumSales(sales)/sales.length;
     }
 
     public long maxSalesMonth(long[] sales) {
@@ -44,13 +40,8 @@ public class StatsService {
     }
 
     public long monthCountLowerAverageSale(long[] sales) {
-        int sum = 0;
         int monthCount = 0;
-
-        for (long sale : sales) {
-            sum += sale;
-        }
-        int averageSum = sum / sales.length;
+        long averageSum = sumSales(sales) / sales.length;
         for (long sale : sales) {
             if (sale < averageSum) {
                 monthCount++;
@@ -60,13 +51,8 @@ public class StatsService {
     }
 
     public long monthCountAboveAverageSale(long[] sales) {
-        int sum = 0;
         int monthCount = 0;
-
-        for (long sale : sales) {
-            sum += sale;
-        }
-        int averageSum = sum / sales.length;
+        long averageSum = sumSales(sales) / sales.length;
         for (long sale : sales) {
             if (sale > averageSum) {
                 monthCount++;
